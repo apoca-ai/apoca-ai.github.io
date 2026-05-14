@@ -86,6 +86,7 @@
     margin-bottom: 16px;
     padding: 0 32px;
     padding-top: 28px;
+}
 
 .news-list-category {
     display: inline-block;
@@ -137,6 +138,7 @@
     color: var(--cyan);
     transition: var(--transition);
     padding: 0 32px 28px;
+}
 
 .news-list-readmore:hover {
     gap: 10px;
@@ -365,12 +367,40 @@
         padding-top: 80px;
     }
     
+    .news-page-header {
+        padding: 40px 0 30px;
+        margin-bottom: 30px;
+    }
+    
     .news-list {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
     
     .news-list-card {
-        padding: 28px 24px;
+        padding: 0;
+    }
+    
+    .news-list-meta {
+        padding: 20px 20px 0;
+    }
+    
+    .news-list-title {
+        padding: 0 20px;
+        font-size: 1.05rem;
+    }
+    
+    .news-list-excerpt {
+        padding: 0 20px;
+        font-size: 0.85rem;
+    }
+    
+    .news-list-readmore {
+        padding: 0 20px 20px;
+    }
+    
+    .news-list-cover {
+        height: 160px;
     }
     
     .news-article {
@@ -393,5 +423,92 @@
     
     .article-body blockquote {
         padding: 16px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .news-page-header {
+        padding: 40px 0 30px;
+        margin-bottom: 30px;
+    }
+    
+    .news-list-meta {
+        padding: 20px 16px 0;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .news-list-title {
+        padding: 0 16px;
+        font-size: 1rem;
+    }
+    
+    .news-list-excerpt {
+        padding: 0 16px;
+        font-size: 0.82rem;
+        margin-bottom: 16px;
+    }
+    
+    .news-list-readmore {
+        padding: 0 16px 20px;
+        font-size: 0.8rem;
+    }
+    
+    .news-list-cover {
+        height: 140px;
+    }
+    
+    .news-article {
+        padding: 16px 0 40px;
+    }
+    
+    .article-header {
+        padding-bottom: 20px;
+        margin-bottom: 24px;
+    }
+    
+    .article-meta {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .article-body {
+        font-size: 0.9rem;
+        line-height: 1.8;
+    }
+    
+    .article-body h2 {
+        font-size: 1.1rem;
+        margin-top: 28px;
+        margin-bottom: 14px;
+    }
+    
+    .article-body h3 {
+        font-size: 1rem;
+        margin-top: 24px;
+    }
+    
+    .article-body p {
+        margin-bottom: 16px;
+    }
+    
+    .article-body blockquote {
+        padding: 14px 16px;
+        margin: 20px 0;
+    }
+    
+    .article-body pre {
+        padding: 16px;
+        font-size: 0.82rem;
+    }
+    
+    .article-body ul,
+    .article-body ol {
+        margin: 12px 0 20px 20px;
+    }
+    
+    .article-footer {
+        margin-top: 40px;
+        padding-top: 28px;
     }
 }

@@ -1037,6 +1037,39 @@ img { max-width: 100%; display: block; }
 }
 
 /* ===== 响应式 ===== */
+
+/* 触摸友好：最小点击区域 */
+.btn,
+.nav-link,
+.nav-toggle,
+.news-list-readmore,
+.footer-col a,
+.contact-item,
+.news-content a,
+.app-card,
+.tech-card {
+    min-height: 44px;
+}
+
+.nav-link,
+.footer-col a,
+.contact-item,
+.news-content a {
+    display: inline-flex;
+    align-items: center;
+}
+
+/* 确保移动端点击区域 */
+a, button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a:focus,
+button:focus {
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
+}
+
 @media (max-width: 1024px) {
     .about-content,
     .intelligent-content {
@@ -1049,16 +1082,24 @@ img { max-width: 100%; display: block; }
         order: -1;
     }
     
+    .about-stats {
+        gap: 32px;
+    }
+    
     .tech-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
     
     .app-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
     
     .app-card.app-wide {
         grid-column: span 2;
+    }
+    
+    .app-card {
+        padding: 28px 24px;
     }
     
     .news-grid {
@@ -1077,6 +1118,18 @@ img { max-width: 100%; display: block; }
     .process-step {
         min-width: 140px;
         margin-bottom: 30px;
+    }
+    
+    .section-header {
+        margin-bottom: 60px;
+    }
+    
+    .about,
+    .technology,
+    .applications,
+    .intelligent,
+    .news {
+        padding: 100px 0;
     }
 }
 
@@ -1123,8 +1176,13 @@ img { max-width: 100%; display: block; }
         grid-column: span 1;
     }
     
+    .app-card {
+        padding: 24px 20px;
+    }
+    
     .intelligent-features {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
     
     .data-flow {
@@ -1156,13 +1214,18 @@ img { max-width: 100%; display: block; }
         gap: 40px;
     }
     
+    .contact {
+        padding: 80px 0;
+    }
+    
     .footer-main {
         flex-direction: column;
         gap: 40px;
     }
     
     .footer-nav {
-        gap: 40px;
+        gap: 32px;
+        flex-wrap: wrap;
     }
     
     .hero-cta {
@@ -1179,6 +1242,77 @@ img { max-width: 100%; display: block; }
         width: 240px;
         height: 240px;
     }
+    
+    .section-header {
+        margin-bottom: 48px;
+    }
+    
+    .about,
+    .technology,
+    .applications,
+    .intelligent,
+    .news {
+        padding: 80px 0;
+    }
+    
+    .about-content,
+    .intelligent-content {
+        gap: 40px;
+    }
+    
+    .about-stats {
+        margin-top: 32px;
+        padding-top: 28px;
+        gap: 20px;
+    }
+    
+    .about-stat-num {
+        font-size: 1.1rem;
+    }
+    
+    .about-stat-label {
+        font-size: 0.85rem;
+    }
+    
+    .tech-card {
+        padding: 36px 28px;
+    }
+    
+    .tech-card-header {
+        gap: 12px;
+    }
+    
+    .tech-icon {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .tech-card h3 {
+        font-size: 1.15rem;
+    }
+    
+    .news-card {
+        padding: 28px 24px;
+        gap: 16px;
+    }
+    
+    .news-card-image {
+        min-height: 160px;
+    }
+    
+    .news-content h3 {
+        font-size: 0.95rem;
+    }
+    
+    .news-content p {
+        font-size: 0.85rem;
+    }
+    
+    .hero-tag {
+        font-size: 0.78rem;
+        padding: 6px 16px;
+        margin-bottom: 24px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1187,18 +1321,189 @@ img { max-width: 100%; display: block; }
         gap: 24px;
     }
     
+    .about-stat-num {
+        font-size: 1rem;
+    }
+    
+    .about-stat-label {
+        font-size: 0.8rem;
+    }
+    
     .tech-card {
-        padding: 32px 24px;
+        padding: 28px 20px;
+    }
+    
+    .tech-card h3 {
+        font-size: 1.05rem;
+    }
+    
+    .tech-desc {
+        font-size: 0.88rem;
+        margin-bottom: 20px;
+    }
+    
+    .tech-list li {
+        font-size: 0.85rem;
     }
     
     .news-card {
         flex-direction: column;
         gap: 16px;
+        padding: 24px 20px;
     }
     
     .news-date {
         flex-direction: row;
         gap: 8px;
         align-items: baseline;
+    }
+    
+    .news-content h3 {
+        font-size: 0.9rem;
+    }
+    
+    .news-content p {
+        font-size: 0.82rem;
+    }
+    
+    .app-card {
+        padding: 20px 16px;
+    }
+    
+    .app-visual {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 18px;
+    }
+    
+    .app-card h3 {
+        font-size: 1rem;
+    }
+    
+    .app-card p {
+        font-size: 0.82rem;
+    }
+    
+    .intelligent-lead {
+        font-size: 1.05rem;
+        margin-bottom: 28px;
+    }
+    
+    .if-item {
+        gap: 10px;
+    }
+    
+    .if-icon {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .if-text h4 {
+        font-size: 0.88rem;
+    }
+    
+    .if-text p {
+        font-size: 0.78rem;
+    }
+    
+    .contact-text h2 {
+        font-size: 1.4rem;
+    }
+    
+    .contact-text p {
+        font-size: 0.88rem;
+    }
+    
+    .contact-item {
+        font-size: 0.85rem;
+    }
+    
+    .footer-brand p {
+        font-size: 0.85rem;
+    }
+    
+    .footer-col h4 {
+        font-size: 0.8rem;
+        margin-bottom: 16px;
+    }
+    
+    .footer-col a {
+        font-size: 0.8rem;
+    }
+    
+    .section-header {
+        margin-bottom: 36px;
+    }
+    
+    .about,
+    .technology,
+    .applications,
+    .intelligent,
+    .news {
+        padding: 60px 0;
+    }
+    
+    .about-lead {
+        font-size: 1.1rem;
+    }
+    
+    .about-text p {
+        font-size: 0.88rem;
+    }
+    
+    .micro-structure {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .micro-layer.layer-2 {
+        inset: 30px;
+    }
+    
+    .micro-layer.layer-3 {
+        inset: 60px;
+    }
+    
+    .process-step {
+        min-width: 120px;
+    }
+    
+    .process-num {
+        font-size: 2rem;
+    }
+    
+    .process-step h4 {
+        font-size: 0.9rem;
+    }
+    
+    .process-step p {
+        font-size: 0.8rem;
+    }
+    
+    .hero-title {
+        font-size: clamp(1.8rem, 8vw, 2.2rem);
+    }
+    
+    .hero-desc {
+        font-size: clamp(0.9rem, 3vw, 1rem);
+        margin-bottom: 36px;
+    }
+    
+    .hero-tag {
+        font-size: 0.72rem;
+        padding: 5px 14px;
+        margin-bottom: 20px;
+    }
+    
+    .container {
+        padding: 0 20px;
+    }
+    
+    .nav-container {
+        padding: 0 20px;
+    }
+    
+    .hero-content {
+        padding: 0 20px;
     }
 }
