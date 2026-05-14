@@ -3,84 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apoca AI - 智能未来</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Apoca AI — 下一代微孔集流体智能制造平台</title>
+    <meta name="description" content="Apoca AI 专注于下一代微孔集流体技术与 AI 智能制造平台建设，推动新能源材料从经验驱动走向算法驱动。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="container">
+    <!-- 导航 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
             <a href="#" class="logo">
-                <span class="logo-icon">◆</span>
+                <span class="logo-mark">A</span>
                 <span class="logo-text">Apoca AI</span>
             </a>
-            <button class="nav-toggle" aria-label="菜单">
+            <button class="nav-toggle" id="navToggle" aria-label="菜单">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link">首页</a></li>
                 <li><a href="#about" class="nav-link">关于</a></li>
-                <li><a href="#services" class="nav-link">服务</a></li>
+                <li><a href="#technology" class="nav-link">技术平台</a></li>
+                <li><a href="#applications" class="nav-link">应用场景</a></li>
+                <li><a href="#intelligent" class="nav-link">智能制造</a></li>
+                <li><a href="#news" class="nav-link">动态</a></li>
                 <li><a href="#contact" class="nav-link">联系</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- 首页 Hero -->
+    <!-- Hero -->
     <section id="home" class="hero">
-        <div class="hero-bg">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-        </div>
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    <span class="gradient-text">智能驱动</span>
-                    <br>重塑未来
-                </h1>
-                <p class="hero-desc">
-                    Apoca AI 致力于构建下一代人工智能解决方案，<br>
-                    用前沿技术为企业赋能，创造无限可能。
-                </p>
-                <div class="hero-buttons">
-                    <a href="#services" class="btn btn-primary">探索服务</a>
-                    <a href="#contact" class="btn btn-secondary">联系我们</a>
-                </div>
+        <canvas id="particleCanvas" class="hero-canvas"></canvas>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-tag">AI × 新材料 × 智能制造</p>
+            <h1 class="hero-title">
+                下一代微孔集流体<br>
+                <span class="gradient-text">智能制造平台</span>
+            </h1>
+            <p class="hero-desc">
+                让新能源材料制造，从经验驱动走向算法驱动
+            </p>
+            <div class="hero-cta">
+                <a href="#technology" class="btn btn-primary">探索技术平台</a>
+                <a href="#about" class="btn btn-ghost">了解我们</a>
             </div>
         </div>
-        <div class="scroll-indicator">
+        <div class="scroll-hint">
             <div class="mouse">
                 <div class="wheel"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 数据统计 -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number" data-count="500">0</div>
-                    <div class="stat-label">服务客户</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="99">0</div>
-                    <div class="stat-label">% 满意度</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="50">0</div>
-                    <div class="stat-label">技术专家</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" data-count="24">0</div>
-                    <div class="stat-label">/7 技术支持</div>
-                </div>
             </div>
         </div>
     </section>
@@ -90,141 +65,365 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">关于我们</span>
-                <h2 class="section-title">用 AI 重新定义<br><span class="gradient-text">可能性边界</span></h2>
+                <h2 class="section-title">
+                    构建<span class="gradient-text"> AI 新材料制造平台</span>
+                </h2>
             </div>
-            <div class="about-grid">
-                <div class="about-card">
-                    <div class="about-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                            <path d="M2 17l10 5 10-5"/>
-                            <path d="M2 12l10 5 10-5"/>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-lead">
+                        我们专注于下一代微孔集流体技术与 AI 智能制造平台建设。
+                    </p>
+                    <p>
+                        公司围绕新能源电池核心材料，构建「材料研发 + 工艺智能化 + 智能制造」协同体系，推动微孔集流体从实验室走向规模化产业化。
+                    </p>
+                    <p>
+                        通过 AI 驱动的工艺优化与数据闭环能力，我们正在探索一种全新的新能源材料制造范式。
+                    </p>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <span class="about-stat-num">多项</span>
+                            <span class="about-stat-label">核心技术专利</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="about-stat-num">全链路</span>
+                            <span class="about-stat-label">AI 工艺覆盖</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="about-stat-num">产业化</span>
+                            <span class="about-stat-label">量产能力验证</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="micro-structure">
+                        <div class="micro-layer layer-1"></div>
+                        <div class="micro-layer layer-2"></div>
+                        <div class="micro-layer layer-3"></div>
+                        <div class="micro-nodes">
+                            <span></span><span></span><span></span>
+                            <span></span><span></span><span></span>
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技术平台 -->
+    <section id="technology" class="technology">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">技术平台</span>
+                <h2 class="section-title">
+                    材料创新与<span class="gradient-text"> AI 深度融合</span>
+                </h2>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-card tech-featured">
+                    <div class="tech-card-header">
+                        <div class="tech-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                            </svg>
+                        </div>
+                        <h3>微孔集流体技术</h3>
+                    </div>
+                    <p class="tech-desc">
+                        三维微孔结构集流体，从根本上提升电池安全性与快充性能，为固态电池等下一代技术路线提供关键材料支撑。
+                    </p>
+                    <ul class="tech-list">
+                        <li><span class="tech-dot"></span>三维微孔结构</li>
+                        <li><span class="tech-dot"></span>高安全性设计</li>
+                        <li><span class="tech-dot"></span>快充性能优化</li>
+                        <li><span class="tech-dot"></span>固态电池适配</li>
+                    </ul>
+                </div>
+                <div class="tech-card tech-featured">
+                    <div class="tech-card-header">
+                        <div class="tech-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <h3>AI 工艺智能化平台</h3>
+                    </div>
+                    <p class="tech-desc">
+                        以数据驱动工艺优化，实现从原材料到成品的全链路智能化控制，构建自进化的制造能力。
+                    </p>
+                    <ul class="tech-list">
+                        <li><span class="tech-dot"></span>全流程数据采集</li>
+                        <li><span class="tech-dot"></span>在线质量检测</li>
+                        <li><span class="tech-dot"></span>实时工艺优化</li>
+                        <li><span class="tech-dot"></span>智能闭环控制</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tech-divider">
+                <div class="tech-divider-line"></div>
+                <span>工艺数字化 × 材料创新</span>
+                <div class="tech-divider-line"></div>
+            </div>
+            <div class="tech-process">
+                <div class="process-step">
+                    <div class="process-num">01</div>
+                    <h4>材料研发</h4>
+                    <p>基于 AI 的材料设计与性能预测</p>
+                </div>
+                <div class="process-arrow"></div>
+                <div class="process-step">
+                    <div class="process-num">02</div>
+                    <h4>工艺开发</h4>
+                    <p>数据驱动的工艺参数优化</p>
+                </div>
+                <div class="process-arrow"></div>
+                <div class="process-step">
+                    <div class="process-num">03</div>
+                    <h4>智能制造</h4>
+                    <p>全链路自动化与智能控制</p>
+                </div>
+                <div class="process-arrow"></div>
+                <div class="process-step">
+                    <div class="process-num">04</div>
+                    <h4>质量闭环</h4>
+                    <p>在线检测与持续迭代优化</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 应用场景 -->
+    <section id="applications" class="applications">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">应用场景</span>
+                <h2 class="section-title">
+                    覆盖新能源<span class="gradient-text"> 全场景需求</span>
+                </h2>
+            </div>
+            <div class="app-grid">
+                <div class="app-card">
+                    <div class="app-visual">
+                        <div class="app-pulse"></div>
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="7" width="20" height="10" rx="2"/>
+                            <path d="M6 7v10M18 7v10"/>
                         </svg>
                     </div>
-                    <h3>前沿技术</h3>
-                    <p>基于最新的大语言模型和深度学习技术，为客户提供领先的 AI 解决方案。</p>
+                    <h3>动力电池</h3>
+                    <p>高能量密度与安全性的平衡，满足电动汽车对续航里程与快充的双重需求</p>
                 </div>
-                <div class="about-card">
-                    <div class="about-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <div class="app-card">
+                    <div class="app-visual">
+                        <div class="app-pulse"></div>
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <h3>储能系统</h3>
+                    <p>长循环寿命与高安全标准，适配大规模电网储能与工商业储能场景</p>
+                </div>
+                <div class="app-card">
+                    <div class="app-visual">
+                        <div class="app-pulse"></div>
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <circle cx="12" cy="12" r="10"/>
                             <path d="M12 6v6l4 2"/>
                         </svg>
                     </div>
-                    <h3>快速交付</h3>
-                    <p>敏捷开发流程，快速迭代，确保项目按时高质量交付。</p>
+                    <h3>超级电容</h3>
+                    <p>超高功率密度与快速充放电能力，赋能瞬时大功率应用场景</p>
                 </div>
-                <div class="about-card">
-                    <div class="about-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                <div class="app-card">
+                    <div class="app-visual">
+                        <div class="app-pulse"></div>
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="5" y="2" width="14" height="20" rx="2"/>
+                            <path d="M12 18h.01"/>
                         </svg>
                     </div>
-                    <h3>专业团队</h3>
-                    <p>汇聚行业顶尖人才，拥有丰富的 AI 研发和项目落地经验。</p>
+                    <h3>消费电子</h3>
+                    <p>轻薄化设计与高安全标准，适配智能手机、笔记本电脑等便携设备</p>
+                </div>
+                <div class="app-card app-wide">
+                    <div class="app-visual">
+                        <div class="app-pulse"></div>
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+                            <path d="M19 10v4a7 7 0 0 1-14 0v-4"/>
+                            <line x1="12" y1="19" x2="12" y2="22"/>
+                        </svg>
+                    </div>
+                    <h3>固态电池方向</h3>
+                    <p>为下一代固态电池技术提供匹配的微孔集流体解决方案，推动电池技术迭代升级</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 服务 -->
-    <section id="services" class="services">
+    <!-- 智能制造 -->
+    <section id="intelligent" class="intelligent">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">服务</span>
-                <h2 class="section-title">全方位 AI <span class="gradient-text">解决方案</span></h2>
+                <span class="section-tag">智能制造</span>
+                <h2 class="section-title">
+                    从经验驱动到<span class="gradient-text"> 算法驱动</span>
+                </h2>
             </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-image">
-                        <div class="service-placeholder">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                            </svg>
+            <div class="intelligent-content">
+                <div class="intelligent-visual">
+                    <div class="data-flow">
+                        <div class="flow-node" data-label="数据采集">
+                            <div class="flow-ring"></div>
+                            <div class="flow-core"></div>
                         </div>
-                    </div>
-                    <div class="service-content">
-                        <h3>智能对话系统</h3>
-                        <p>基于大语言模型的智能客服、对话机器人和知识问答系统。</p>
-                        <ul class="service-features">
-                            <li>多轮对话理解</li>
-                            <li>知识库集成</li>
-                            <li>多渠道部署</li>
-                        </ul>
+                        <div class="flow-connector"></div>
+                        <div class="flow-node" data-label="在线检测">
+                            <div class="flow-ring"></div>
+                            <div class="flow-core"></div>
+                        </div>
+                        <div class="flow-connector"></div>
+                        <div class="flow-node" data-label="工艺优化">
+                            <div class="flow-ring"></div>
+                            <div class="flow-core"></div>
+                        </div>
+                        <div class="flow-connector"></div>
+                        <div class="flow-node" data-label="闭环控制">
+                            <div class="flow-ring"></div>
+                            <div class="flow-core"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="service-card">
-                    <div class="service-image">
-                        <div class="service-placeholder">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <rect x="3" y="3" width="18" height="18" rx="2"/>
-                                <path d="M3 9h18"/>
-                                <path d="M9 21V9"/>
-                            </svg>
+                <div class="intelligent-text">
+                    <p class="intelligent-lead">
+                        我们正在构建 AI 新材料制造平台，而非传统材料工厂。
+                    </p>
+                    <div class="intelligent-features">
+                        <div class="if-item">
+                            <div class="if-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 20V10M18 20V4M6 20v-4"/>
+                                </svg>
+                            </div>
+                            <div class="if-text">
+                                <h4>AI 驱动</h4>
+                                <p>算法替代经验，数据驱动决策</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="service-content">
-                        <h3>数据分析平台</h3>
-                        <p>利用 AI 进行数据挖掘、预测分析和商业智能可视化。</p>
-                        <ul class="service-features">
-                            <li>实时数据处理</li>
-                            <li>预测性分析</li>
-                            <li>可视化报表</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-image">
-                        <div class="service-placeholder">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M12 2a3 3 0 0 0-3 3v14a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
-                                <path d="M19 10v4a7 7 0 0 1-14 0v-4"/>
-                            </svg>
+                        <div class="if-item">
+                            <div class="if-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                            </div>
+                            <div class="if-text">
+                                <h4>在线检测</h4>
+                                <p>实时质量监控，秒级异常响应</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="service-content">
-                        <h3>语音识别合成</h3>
-                        <p>高质量的语音转文字、文字转语音及多语种翻译服务。</p>
-                        <ul class="service-features">
-                            <li>实时语音识别</li>
-                            <li>自然语音合成</li>
-                            <li>多语种支持</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-image">
-                        <div class="service-placeholder">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/>
-                                <circle cx="12" cy="10" r="3"/>
-                            </svg>
+                        <div class="if-item">
+                            <div class="if-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div class="if-text">
+                                <h4>数据闭环</h4>
+                                <p>全链路数据回流，持续迭代优化</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="service-content">
-                        <h3>计算机视觉</h3>
-                        <p>图像识别、目标检测、人脸识别等视觉 AI 能力。</p>
-                        <ul class="service-features">
-                            <li>图像分类识别</li>
-                            <li>目标跟踪检测</li>
-                            <li>视频内容分析</li>
-                        </ul>
+                        <div class="if-item">
+                            <div class="if-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5"/>
+                                    <path d="M2 12l10 5 10-5"/>
+                                </svg>
+                            </div>
+                            <div class="if-text">
+                                <h4>智能工艺</h4>
+                                <p>自进化制造能力，越用越精准</p>
+                            </div>
+                        </div>
+                        <div class="if-item">
+                            <div class="if-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                                </svg>
+                            </div>
+                            <div class="if-text">
+                                <h4>自动优化</h4>
+                                <p>参数自适应调整，无需人工干预</p>
+                            </div>
+                        </div>
+                        <div class="if-item">
+                            <div class="if-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                            </div>
+                            <div class="if-text">
+                                <h4>数字化产线</h4>
+                                <p>全流程数字化，透明可追溯</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta">
+    <!-- 新闻动态 -->
+    <section id="news" class="news">
         <div class="container">
-            <div class="cta-content">
-                <h2>准备好开启 <span class="gradient-text">AI 之旅</span> 了吗？</h2>
-                <p>与我们的专家团队联系，探讨如何利用 AI 技术推动您的业务发展。</p>
-                <a href="#contact" class="btn btn-primary btn-large">立即咨询</a>
+            <div class="section-header">
+                <span class="section-tag">动态</span>
+                <h2 class="section-title">
+                    行业洞察与<span class="gradient-text"> 最新进展</span>
+                </h2>
+            </div>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-date">
+                        <span class="news-month">2025</span>
+                        <span class="news-day">Q2</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">技术进展</span>
+                        <h3>微孔集流体技术取得关键突破</h3>
+                        <p>公司在三维微孔结构设计与制造工艺方面取得重要进展，进一步推进产业化进程。</p>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-date">
+                        <span class="news-month">2025</span>
+                        <span class="news-day">Q1</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">行业合作</span>
+                        <h3>与头部动力电池企业开展验证</h3>
+                        <p>已与头部动力电池企业建立技术验证合作，产品性能获得积极反馈。</p>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-date">
+                        <span class="news-month">2024</span>
+                        <span class="news-day">Q4</span>
+                    </div>
+                    <div class="news-content">
+                        <span class="news-category">平台建设</span>
+                        <h3>AI 工艺智能化平台正式上线</h3>
+                        <p>自研 AI 工艺优化平台完成核心模块部署，实现从数据采集到工艺优化的全链路覆盖。</p>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
@@ -232,64 +431,28 @@
     <!-- 联系我们 -->
     <section id="contact" class="contact">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">联系我们</span>
-                <h2 class="section-title">让我们 <span class="gradient-text">开始对话</span></h2>
-            </div>
-            <div class="contact-grid">
+            <div class="contact-inner">
+                <div class="contact-text">
+                    <span class="section-tag">联系我们</span>
+                    <h2>开启<span class="gradient-text"> 合作对话</span></h2>
+                    <p>期待与您探讨下一代新能源材料的技术可能。</p>
+                </div>
                 <div class="contact-info">
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
-                            </svg>
-                        </div>
-                        <div class="contact-detail">
-                            <h4>邮箱</h4>
-                            <p>hello@apoca-ai.com</p>
-                        </div>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <span>hello@apoca-ai.com</span>
                     </div>
                     <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                <circle cx="12" cy="10" r="3"/>
-                            </svg>
-                        </div>
-                        <div class="contact-detail">
-                            <h4>地址</h4>
-                            <p>北京市海淀区中关村科技园</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <polyline points="12 6 12 12 16 14"/>
-                            </svg>
-                        </div>
-                        <div class="contact-detail">
-                            <h4>工作时间</h4>
-                            <p>周一至周五 9:00 - 18:00</p>
-                        </div>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span>北京市海淀区中关村科技园</span>
                     </div>
                 </div>
-                <form class="contact-form" onsubmit="return handleSubmit(event)">
-                    <div class="form-group">
-                        <input type="text" id="name" required placeholder=" ">
-                        <label for="name">姓名</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" required placeholder=" ">
-                        <label for="email">邮箱</label>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" rows="4" required placeholder=" "></textarea>
-                        <label for="message">留言内容</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-full">发送消息</button>
-                </form>
             </div>
         </div>
     </section>
@@ -297,39 +460,30 @@
     <!-- 页脚 -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
+            <div class="footer-main">
                 <div class="footer-brand">
                     <a href="#" class="logo">
-                        <span class="logo-icon">◆</span>
+                        <span class="logo-mark">A</span>
                         <span class="logo-text">Apoca AI</span>
                     </a>
-                    <p>用智能技术创造更美好的未来。</p>
+                    <p>AI 驱动的新型新能源材料平台</p>
                 </div>
-                <div class="footer-links">
-                    <div class="footer-column">
+                <div class="footer-nav">
+                    <div class="footer-col">
                         <h4>导航</h4>
                         <ul>
                             <li><a href="#home">首页</a></li>
                             <li><a href="#about">关于</a></li>
-                            <li><a href="#services">服务</a></li>
+                            <li><a href="#technology">技术平台</a></li>
+                            <li><a href="#applications">应用场景</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>更多</h4>
+                        <ul>
+                            <li><a href="#intelligent">智能制造</a></li>
+                            <li><a href="#news">动态</a></li>
                             <li><a href="#contact">联系</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>服务</h4>
-                        <ul>
-                            <li><a href="#services">智能对话</a></li>
-                            <li><a href="#services">数据分析</a></li>
-                            <li><a href="#services">语音技术</a></li>
-                            <li><a href="#services">计算机视觉</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>关注我们</h4>
-                        <ul>
-                            <li><a href="#">GitHub</a></li>
-                            <li><a href="#">微信公众号</a></li>
-                            <li><a href="#">知乎</a></li>
                         </ul>
                     </div>
                 </div>

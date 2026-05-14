@@ -1,92 +1,170 @@
+// ===== Canvas 粒子效果 =====
+const canvas = document.getElementById('particleCanvas');
+
+if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let animationId = null;
+    let isActive = true;
+
+    function resizeCanvas() {
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = window.innerWidth * dpr;
+        canvas.height = window.innerHeight * dpr;
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+        ctx.scale(dpr, dpr);
+    }
+
+    class Particle {
+        constructor() {
+            this.reset();
+        }
+
+        reset() {
+            this.x = Math.random() * window.innerWidth;
+            this.y = Math.random() * window.innerHeight;
+            this.size = Math.random() * 1.5 + 0.5;
+            this.speedX = (Math.random() - 0.5) * 0.3;
+            this.speedY = (Math.random() - 0.5) * 0.3;
+            this.opacity = Math.random() * 0.5 + 0.1;
+            this.hue = Math.random() > 0.5 ? 190 : 260; // cyan or purple
+        }
+
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            if (this.x < 0 || this.x > window.innerWidth ||
+                this.y < 0 || this.y > window.innerHeight) {
+                this.reset();
+            }
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `hsla(${this.hue}, 80%, 60%, ${this.opacity})`;
+            ctx.fill();
+        }
+    }
+
+    function initParticles() {
+        particles = [];
+        const count = window.innerWidth < 768 ? 40 : 80;
+        for (let i = 0; i < count; i++) {
+            particles.push(new Particle());
+        }
+    }
+
+    function drawConnections() {
+        const maxDist = 120;
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < maxDist) {
+                    const opacity = (1 - dist / maxDist) * 0.08;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = `rgba(0, 212, 255, ${opacity})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    function animate() {
+        if (!isActive) return;
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
+        drawConnections();
+
+        animationId = requestAnimationFrame(animate);
+    }
+
+    resizeCanvas();
+    initParticles();
+    animate();
+
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+        initParticles();
+    });
+
+    // 页面不可见时暂停动画
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            isActive = false;
+            if (animationId) cancelAnimationFrame(animationId);
+        } else {
+            isActive = true;
+            animate();
+        }
+    });
+}
+
 // ===== 导航栏滚动效果 =====
-const navbar = document.querySelector('.navbar');
-let lastScroll = 0;
+const navbar = document.getElementById('navbar');
 
 window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 50) {
+    if (window.pageYOffset > 50) {
         navbar.classList.add('scrolled');
     } else {
         navbar.classList.remove('scrolled');
     }
-    
-    lastScroll = currentScroll;
 });
 
 // ===== 移动端菜单 =====
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.querySelector('.nav-menu');
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
 
-navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    navToggle.classList.toggle('active');
-});
-
-// 点击导航链接后关闭菜单
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
+if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        navToggle.classList.toggle('active');
     });
-});
 
-// ===== 数字滚动动画 =====
-function animateCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    const speed = 200;
-    
-    counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute('data-count'));
-        const count = parseInt(counter.innerText);
-        const inc = target / speed;
-        
-        if (count < target) {
-            counter.innerText = Math.ceil(count + inc);
-            setTimeout(animateCounters, 20);
-        } else {
-            counter.innerText = target;
-        }
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+        });
     });
-}
-
-// 使用 Intersection Observer 触发动画
-const statsSection = document.querySelector('.stats');
-let countersAnimated = false;
-
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting && !countersAnimated) {
-            countersAnimated = true;
-            animateCounters();
-        }
-    });
-}, { threshold: 0.5 });
-
-if (statsSection) {
-    statsObserver.observe(statsSection);
 }
 
 // ===== 滚动显示动画 =====
-const fadeElements = document.querySelectorAll('.about-card, .service-card, .section-header, .contact-item');
+const revealElements = document.querySelectorAll(
+    '.section-header, .about-content, .tech-grid, .tech-process, ' +
+    '.app-card, .intelligent-content, .news-card, .contact-inner'
+);
 
-const fadeObserver = new IntersectionObserver((entries) => {
+const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
+            const delay = index * 80;
             setTimeout(() => {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }, index * 100);
-            fadeObserver.unobserve(entry.target);
+                entry.target.classList.add('visible');
+            }, delay);
+            revealObserver.unobserve(entry.target);
         }
     });
-}, { threshold: 0.1 });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
 
-fadeElements.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    fadeObserver.observe(el);
+revealElements.forEach(el => {
+    el.classList.add('reveal');
+    revealObserver.observe(el);
 });
 
 // ===== 平滑滚动 =====
@@ -95,7 +173,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            const offsetTop = target.offsetTop - 80;
+            const offsetTop = target.offsetTop - 70;
             window.scrollTo({
                 top: offsetTop,
                 behavior: 'smooth'
@@ -104,39 +182,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ===== 表单提交 =====
-function handleSubmit(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    
-    // 简单验证
-    if (!name || !email || !message) {
-        alert('请填写所有字段');
-        return false;
-    }
-    
-    // 模拟提交成功
-    alert('感谢您的留言！我们会尽快与您联系。');
-    e.target.reset();
-    return false;
-}
-
-// ===== 鼠标跟随效果 (Hero 区域) =====
-const hero = document.querySelector('.hero');
-const orbs = document.querySelectorAll('.gradient-orb');
-
-if (hero && !window.matchMedia('(pointer: coarse)').matches) {
-    hero.addEventListener('mousemove', (e) => {
-        const rect = hero.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        
-        orbs.forEach((orb, index) => {
-            const speed = (index + 1) * 20;
-            orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
-        });
+// ===== 应用卡片脉冲效果交互 =====
+document.querySelectorAll('.app-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        const pulse = card.querySelector('.app-pulse');
+        if (pulse) {
+            pulse.style.animationDuration = '1s';
+        }
     });
-}
+    card.addEventListener('mouseleave', () => {
+        const pulse = card.querySelector('.app-pulse');
+        if (pulse) {
+            pulse.style.animationDuration = '3s';
+        }
+    });
+});
