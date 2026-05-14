@@ -5,11 +5,42 @@ const { marked } = require('marked');
 
 const POSTS_DIR = path.join(__dirname, '..', 'source', '_posts');
 const NEWS_DIR = path.join(__dirname, '..', 'news');
+const IMAGES_SRC_DIR = path.join(POSTS_DIR, 'images');
+const IMAGES_DST_DIR = path.join(NEWS_DIR, 'images');
 const ROOT_DIR = path.join(__dirname, '..');
 
 // 确保目录存在
 if (!fs.existsSync(NEWS_DIR)) {
     fs.mkdirSync(NEWS_DIR, { recursive: true });
+}
+
+// 复制图片目录
+function copyImages() {
+    if (!fs.existsSync(IMAGES_SRC_DIR)) return;
+    
+    // 创建目标图片目录
+    if (!fs.existsSync(IMAGES_DST_DIR)) {
+        fs.mkdirSync(IMAGES_DST_DIR, { recursive: true });
+    }
+    
+    const imageFiles = fs.readdirSync(IMAGES_SRC_DIR)
+        .filter(f => !f.startsWith('.'));
+    
+    let copied = 0;
+    imageFiles.forEach(filename => {
+        const src = path.join(IMAGES_SRC_DIR, filename);
+        const dst = path.join(IMAGES_DST_DIR, filename);
+        
+        // 只复制文件，跳过目录
+        if (fs.statSync(src).isFile()) {
+            fs.copyFileSync(src, dst);
+            copied++;
+        }
+    });
+    
+    if (copied > 0) {
+        console.log(`Copied ${copied} image(s) to news/images/\n`);
+    }
 }
 
 // 读取所有 markdown 文件
@@ -30,6 +61,7 @@ function getPosts() {
                 date: parsed.data.date || new Date().toISOString().split('T')[0],
                 category: parsed.data.category || '资讯',
                 excerpt: parsed.data.excerpt || '',
+                cover: parsed.data.cover || '',
                 content: marked(parsed.content),
                 rawContent: parsed.content
             };
@@ -181,8 +213,13 @@ ${getFooter()}
 function generateIndexPage(posts) {
     const cards = posts.map(post => {
         const excerpt = post.excerpt || (post.rawContent.slice(0, 120) + '...');
+        const coverHtml = post.cover ? `
+            <div class="news-list-cover">
+                <img src="${post.cover}" alt="${post.title}" loading="lazy">
+            </div>` : '';
         return `
         <article class="news-list-card">
+            ${coverHtml}
             <div class="news-list-meta">
                 <span class="news-list-category">${post.category}</span>
                 <span class="news-list-date">${formatDate(post.date)}</span>
@@ -233,6 +270,9 @@ ${getFooter()}
 // 主流程
 function main() {
     console.log('Building news pages...\n');
+    
+    // 复制图片
+    copyImages();
     
     const posts = getPosts();
     
