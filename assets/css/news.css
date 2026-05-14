@@ -1,0 +1,366 @@
+/* ===== 资讯页面样式 ===== */
+
+/* 页面容器 */
+.news-page {
+    padding-top: 100px;
+    min-height: 100vh;
+}
+
+/* 列表页头部 */
+.news-page-header {
+    padding: 60px 0 50px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 50px;
+}
+
+.news-page-header .section-tag {
+    margin-bottom: 20px;
+}
+
+.news-page-header .section-title {
+    margin-bottom: 16px;
+}
+
+.news-page-desc {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+/* 资讯列表 */
+.news-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 80px;
+}
+
+.news-list-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 32px;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.news-list-card:hover {
+    border-color: var(--cyan-dim);
+    transform: translateY(-4px);
+}
+
+.news-list-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.news-list-category {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    font-size: 0.75rem;
+    color: var(--cyan);
+    font-weight: 500;
+}
+
+.news-list-date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.news-list-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.news-list-title a {
+    color: var(--text);
+}
+
+.news-list-title a:hover {
+    color: var(--cyan);
+}
+
+.news-list-excerpt {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+.news-list-readmore {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--cyan);
+    transition: var(--transition);
+}
+
+.news-list-readmore:hover {
+    gap: 10px;
+}
+
+/* 文章页 */
+.news-article {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 0 80px;
+}
+
+.article-header {
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+}
+
+.article-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.article-category {
+    display: inline-block;
+    padding: 5px 14px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    color: var(--cyan);
+    font-weight: 500;
+}
+
+.article-date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.article-title {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+}
+
+/* 文章内容 */
+.article-body {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--text-secondary);
+}
+
+.article-body h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 48px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: -0.01em;
+}
+
+.article-body h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 32px 0 16px;
+}
+
+.article-body h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 24px 0 12px;
+}
+
+.article-body p {
+    margin-bottom: 20px;
+}
+
+.article-body strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.article-body a {
+    color: var(--cyan);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.article-body a:hover {
+    border-bottom-color: var(--cyan);
+}
+
+.article-body ul,
+.article-body ol {
+    margin: 16px 0 24px 24px;
+    padding: 0;
+}
+
+.article-body ul {
+    list-style: disc;
+}
+
+.article-body ol {
+    list-style: decimal;
+}
+
+.article-body li {
+    margin-bottom: 8px;
+    padding-left: 8px;
+}
+
+.article-body li::marker {
+    color: var(--cyan);
+}
+
+.article-body blockquote {
+    margin: 28px 0;
+    padding: 20px 28px;
+    background: var(--bg-card);
+    border-left: 3px solid var(--cyan);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-style: italic;
+    color: var(--text);
+}
+
+.article-body blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+.article-body code {
+    font-family: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
+    font-size: 0.88em;
+    padding: 2px 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--cyan);
+}
+
+.article-body pre {
+    margin: 24px 0;
+    padding: 20px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow-x: auto;
+}
+
+.article-body pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.7;
+}
+
+.article-body img {
+    max-width: 100%;
+    border-radius: var(--radius-sm);
+    margin: 24px 0;
+    border: 1px solid var(--border);
+}
+
+.article-body hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 40px 0;
+}
+
+.article-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 0.9rem;
+}
+
+.article-body th,
+.article-body td {
+    padding: 12px 16px;
+    text-align: left;
+    border: 1px solid var(--border);
+}
+
+.article-body th {
+    background: var(--bg-card);
+    font-weight: 600;
+    color: var(--text);
+}
+
+.article-body td {
+    color: var(--text-secondary);
+}
+
+/* 文章底部 */
+.article-footer {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+}
+
+.article-footer .btn {
+    gap: 8px;
+}
+
+/* 导航栏激活状态 */
+.nav-link.active {
+    color: var(--cyan);
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .news-page {
+        padding-top: 80px;
+    }
+    
+    .news-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .news-list-card {
+        padding: 28px 24px;
+    }
+    
+    .news-article {
+        padding: 24px 0 60px;
+    }
+    
+    .article-header {
+        padding-bottom: 28px;
+        margin-bottom: 32px;
+    }
+    
+    .article-body {
+        font-size: 0.95rem;
+    }
+    
+    .article-body h2 {
+        font-size: 1.2rem;
+        margin-top: 36px;
+    }
+    
+    .article-body blockquote {
+        padding: 16px 20px;
+    }
+}
